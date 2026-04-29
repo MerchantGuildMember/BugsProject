@@ -11,4 +11,6 @@ add_executable(BugsProject
         src/loadFile.cpp
         src/loadFile.h
         src/SaveFile.cpp
-        src/SaveFile.h)
+        src/SaveFile.h
+        src/Bug.cpp
+        src/Bug.h)
