@@ -7,4 +7,8 @@ include_directories(src)
 
 add_executable(BugsProject
         src/Main.cpp
-        src/Main.h)
+        src/Main.h
+        src/loadFile.cpp
+        src/loadFile.h
+        src/SaveFile.cpp
+        src/SaveFile.h)
