@@ -13,4 +13,8 @@ add_executable(BugsProject
         src/SaveFile.cpp
         src/SaveFile.h
         src/Bug.cpp
-        src/Bug.h)
+        src/Bug.h
+        src/Crawler.cpp
+        src/Crawler.h
+        src/Hopper.cpp
+        src/Hopper.h)
