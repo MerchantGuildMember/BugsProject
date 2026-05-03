@@ -6,6 +6,9 @@
 
 #include <iostream>
 #include <ostream>
+#include <vector>
+
+#include "Bug.h"
 
 /*
  *  TODO:   Menu Items like
@@ -22,6 +25,7 @@
 void menu();
 
 int main() {
+    std::vector<Bug*> bugs;
 
     menu();
 
