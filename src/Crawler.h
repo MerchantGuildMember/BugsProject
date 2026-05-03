@@ -13,7 +13,8 @@ class Crawler: public Bug {
 
     void move() {
         while (isWayBlocked()) {
-
+            // https://stackoverflow.com/questions/2999012/generating-random-enums
+            currentDirection = direction(rand() % 4);       // not sure if it'll work yet
         }
         switch (currentDirection) {
             // Depending on direction, adds +1 or -1 to which item in the pair.
