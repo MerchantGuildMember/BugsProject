@@ -72,4 +72,6 @@ void menu() {
     std::cout << "| 7. Run simulation                   |" << std::endl;
     std::cout << "| 8. Exit (writes history to file)    |" << std::endl;
     std::cout << "+-------------------------------------+" << std::endl;
+    std::cout << "| Input:";
+
 }
