@@ -19,6 +19,8 @@
  *  TODO:               8. Exit (Write Life history of all bugs to file)
  */
 
+void menu();
+
 int main() {
 
     std::cout << "Hello World!" << std::endl;
