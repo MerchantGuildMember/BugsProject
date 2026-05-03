@@ -4,6 +4,9 @@
 
 #ifndef BUGSPROJECT_CRAWLER_H
 #define BUGSPROJECT_CRAWLER_H
+#include <iostream>
+
+#include "Bug.h"
 
 
 class Crawler: public Bug {
