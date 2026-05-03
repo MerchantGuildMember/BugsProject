@@ -24,6 +24,24 @@
 
 void menu();
 
+void loadData(std::vector<Bug*> bugs);
+
+void displayAllBugs();
+
+void displayByID();
+
+void tapGlass();
+
+void displayPathHistoryAllBugs();
+
+void displayAllCells();
+
+void runSimulation();
+
+std::vector<Bug*> bugs;
+
+void router(int choice);
+
 int main() {
     std::vector<Bug*> bugs;
 
