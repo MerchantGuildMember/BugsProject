@@ -48,5 +48,10 @@ void loadData(std::vector<Bug*> &bugs) {
         while (std::getline(ss, token, ';')) {
             fields.push_back(token);
         }
+        // TODO IF FIELDS EMPTY SKIP
+        // TODO GO THROUGH ALL BUG FIELDS AND ASSIGN
+        // TODO CHECK FOR TYPE AND ASSIGN CORRECT BUG TYPE
+        // TODO CLOSE FILE
+        // TODO SMALL DEBUG LINE AT THE END
     }
 }
