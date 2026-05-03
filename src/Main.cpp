@@ -25,3 +25,19 @@ int main() {
 
     return 0;
 }
+
+
+void menu() {
+    std::cout << "+-------------------------------------+" << std::endl;
+    std::cout << "|  Welcome to the Hopper World  |" << std::endl;
+    std::cout << "+-------------------------------------+" << std::endl;
+    std::cout << "| 1. Load Data from file              |" << std::endl;
+    std::cout << "| 2. Display all bugs                 |" << std::endl;
+    std::cout << "| 3. Display bug by ID                |" << std::endl;
+    std::cout << "| 4. Tap the glass                    |" << std::endl;
+    std::cout << "| 5. Display Life history of all bugs |" << std::endl;
+    std::cout << "| 6. Display all cells                |" << std::endl;
+    std::cout << "| 7. Run simulation                   |" << std::endl;
+    std::cout << "| 8. Exit (writes history to file)    |" << std::endl;
+    std::cout << "+-------------------------------------+" << std::endl;
+}
