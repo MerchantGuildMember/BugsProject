@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <iosfwd>
+#include <sstream>
+#include <vector>
 
 #include "Bug.h"
 
