@@ -22,7 +22,7 @@ class Crawler: public Bug {
             // Depending on direction, adds +1 or -1 to which item in the pair.
             case NORTH: // If bug is facing NORTH, it will be going up towards 0 so decrement
                 std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
-                << " to " << position.first << ", " << position.second+1 << std::endl;
+                << " to " << position.first << ", " << position.second-1 << std::endl;
                 position.second -= 1;
                 break;
 
@@ -34,7 +34,7 @@ class Crawler: public Bug {
 
             case SOUTH: // If bug is facing SOUTH, it will be going down away from 0 so increment
                 std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
-                << " to " << position.first << ", " << position.second-1 << std::endl;
+                << " to " << position.first << ", " << position.second+1 << std::endl;
                 position.second += 1;
                 break;
 
@@ -43,7 +43,6 @@ class Crawler: public Bug {
                 << " to " << position.first-1 << ", " << position.second << std::endl;
                 position.first -= 1;
                 break;
-
         }
         path.push_back(position);
 
