@@ -11,7 +11,7 @@
 class Bug {
     protected:
         int id;
-        std::pair<int, int> coordinates;
+        std::pair<int, int> position;
         enum direction {
             NORTH,
             EAST,
