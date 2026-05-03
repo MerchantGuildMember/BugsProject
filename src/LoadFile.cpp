@@ -38,6 +38,15 @@ void loadData(std::vector<Bug*> &bugs) {
         return;
     }
 
-    inputFile.close();
-    return 0;
+    std::string line;
+
+    while (std::getline(inputFile, line)) {
+        std::stringstream ss(line);
+        std::string token;
+        std::vector<std::string> fields;
+
+        while (std::getline(ss, token, ';')) {
+            fields.push_back(token);
+        }
+    }
 }
