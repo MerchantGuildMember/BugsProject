@@ -4,6 +4,12 @@
 
 #include "LoadFile.h"
 
+#include <iostream>
+#include <fstream>
+#include <iosfwd>
+
+#include "Bug.h"
+
 /* TODO: Load Data from File
  * TODO:    +---------------------------+---------------------------------------------------------------------------+
  * TODO:    |   Type of Bug             |   ‘C’ for crawler, ‘H’ for Hopper                                         |
@@ -26,7 +32,14 @@
 
 
 int main() {
+    std::ifstream inputFile("bugs.txt");
+    std::string myText;
 
+    while (std::getline (inputFile, myText)) {
 
+        std::cout << myText << std::endl;
+    }
+
+    inputFile.close();
     return 0;
 }
