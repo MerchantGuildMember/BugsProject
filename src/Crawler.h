@@ -23,25 +23,25 @@ class Crawler: public Bug {
             case NORTH: // If bug is facing NORTH, it will be going up towards 0 so decrement
                 std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
                 << " to " << position.first << ", " << position.second+1 << std::endl;
-                position.second =- 1;
+                position.second -= 1;
                 break;
 
             case EAST:  // If bug is facing EAST, it will be going away from 0 so increment
                 std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
                 << " to " << position.first+1 << ", " << position.second << std::endl;
-                position.first =+ 1;
+                position.first += 1;
                 break;
 
             case SOUTH: // If bug is facing SOUTH, it will be going down away from 0 so increment
                 std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
                 << " to " << position.first << ", " << position.second-1 << std::endl;
-                position.second =+ 1;
+                position.second += 1;
                 break;
 
             case WEST:  // If bug is facing WEST, it will be going left towards 0 so decrement
                 std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
                 << " to " << position.first-1 << ", " << position.second << std::endl;
-                position.first =- 1;
+                position.first -= 1;
                 break;
 
         }
