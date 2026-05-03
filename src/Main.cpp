@@ -45,7 +45,15 @@ void router(int choice);
 int main() {
     std::vector<Bug*> bugs;
 
-    menu();
+    // call menu
+    int choice = -1;
+    do {
+        menu();
+        std::cin >> choice;
+        router(choice);
+
+    } while (choice > 0 && choice < 9);
+
 
     return 0;
 }
