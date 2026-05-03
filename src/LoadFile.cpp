@@ -33,11 +33,9 @@
 
 int main() {
     std::ifstream inputFile("bugs.txt");
-    std::string myText;
-
-    while (std::getline (inputFile, myText)) {
-
-        std::cout << myText << std::endl;
+    if (!inputFile) {
+        std::cout << "Error opening bugs.txt" << std::endl;
+        return;
     }
 
     inputFile.close();
