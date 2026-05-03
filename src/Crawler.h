@@ -9,6 +9,8 @@
 #include "Bug.h"
 
 
+
+
 class Crawler: public Bug {
 
     void move() {
@@ -49,21 +51,30 @@ class Crawler: public Bug {
     bool isWayBlocked() {
         switch (currentDirection) {
             case NORTH:
+                if (position.second == 0) {
+                    std::cout  << "Crawler " << id << " reached eastern edge, changing direction." << std::endl;
+                    return true;
+                }
                 break;
             case EAST:
+                if (position.first == 9) {
+                    std::cout  << "Crawler " << id << " reached eastern edge, changing direction." << std::endl;
+                    return true;
+                }
 
                 break;
             case SOUTH:
+                if (position.second == 9) {
+                    std::cout  << "Crawler " << id << " reached southern edge, changing direction." << std::endl;
+                    return true;
+                }
 
                 break;
             case WEST:
                 if (position.first == 0) {
                     std::cout  << "Crawler " << id << " reached western edge, changing direction." << std::endl;
-                    // https://stackoverflow.com/questions/2999012/generating-random-enums
-                    currentDirection = direction(rand() % 4);       // not sure if it'll work yet
-                    
+                    return true;
                 }
-                break;
         }
 
         return false;
