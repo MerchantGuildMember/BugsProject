@@ -18,6 +18,7 @@ class Bug {
             SOUTH,
             WEST
         };
+        direction currentDirection;
         int health;
         bool isAlive;
         std::list<std::pair<int, int>> path;
