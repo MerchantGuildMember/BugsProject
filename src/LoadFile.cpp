@@ -31,7 +31,7 @@
 
 
 
-int main() {
+void loadData(std::vector<Bug*> &bugs) {
     std::ifstream inputFile("bugs.txt");
     if (!inputFile) {
         std::cout << "Error opening bugs.txt" << std::endl;
