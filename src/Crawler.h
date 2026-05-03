@@ -45,6 +45,7 @@ class Crawler: public Bug {
                 break;
 
         }
+        path.push_back(position);
 
     }
 
