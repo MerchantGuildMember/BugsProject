@@ -75,3 +75,34 @@ void menu() {
     std::cout << "| Input:";
 
 }
+
+void router(int choice) {
+    switch (choice) {
+        case 1:
+            loadData(bugs);
+            break;
+        case 2:
+            displayAllBugs();
+            break;
+        case 3:
+            displayByID();
+            break;
+        case 4:
+            tapGlass();
+            break;
+        case 5:
+            displayPathHistoryAllBugs();
+            break;
+        case 6:
+            displayAllCells();
+            break;
+        case 7:
+            runSimulation();
+            break;
+        case 8:
+            exit(0);
+            break;
+
+
+    }
+}
