@@ -23,9 +23,7 @@ class Bug {
         bool isAlive;
         std::list<std::pair<int, int>> path;
 
-    virtual void move() {
-
-    }
+    virtual void move() = 0;
 
     bool isWayBlocked() {
         return false;
