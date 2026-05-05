@@ -125,6 +125,13 @@ void displayPathHistoryAllBugs() {
 
 void displayAllCells() {
 
+    // make X and Y coords + values for easier valuing later on
+    for (int i = 0; i < cells.size(); i++) {
+        for (int j = 0; j < cells[i].size(); j++) {
+            std::cout << cells[i][j] << "  ";
+        }
+        std::cout << std::endl;
+    }
 }
 
 void runSimulation() {
