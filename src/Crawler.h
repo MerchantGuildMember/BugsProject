@@ -13,6 +13,9 @@
 
 class Crawler: public Bug {
 
+    Crawler(int id, int x, int y, int dir, int health)
+    : Bug(id, x, y, dir, health) {}
+
     void move() {
         while (isWayBlocked()) {
             // https://stackoverflow.com/questions/2999012/generating-random-enums
