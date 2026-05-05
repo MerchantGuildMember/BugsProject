@@ -68,7 +68,9 @@ void loadData(std::vector<Bug*> &bugs) {
             Crawler* crawler = new Crawler(id, x, y, direction, health);
         }
         else if (type == 'H') {
-            Hopper* hopper = new Hopper(id, x, y, direction, health);
+            int hopLength = std::stoi(fields[6]);
+            Hopper* hopper = new Hopper(id, x, y, direction, health, hopLength);
+            bugs.push_back(hopper);
         }
 
         // TODO CLOSE FILE
