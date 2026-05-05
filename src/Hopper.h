@@ -4,6 +4,8 @@
 
 #ifndef BUGSPROJECT_HOPPER_H
 #define BUGSPROJECT_HOPPER_H
+#include <iostream>
+
 #include "Bug.h"
 
 // Similar to Crawler; just different hop length
