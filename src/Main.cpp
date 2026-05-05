@@ -106,3 +106,33 @@ void router(int choice) {
 
     }
 }
+
+void loadData(std::vector<Bug*> &bugs) {
+
+}
+
+void displayAllBugs() {
+
+}
+
+void displayByID() {
+
+}
+
+void tapGlass() {
+
+}
+
+void displayPathHistoryAllBugs() {
+
+}
+
+void displayAllCells() {
+
+}
+
+void runSimulation() {
+
+}
+
+
