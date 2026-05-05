@@ -51,6 +51,8 @@ void loadData(std::vector<Bug*> &bugs) {
             fields.push_back(token);
         }
         // TODO IF FIELDS EMPTY SKIP
+        if (fields.empty()) continue;
+
         // TODO GO THROUGH ALL BUG FIELDS AND ASSIGN
         // TODO CHECK FOR TYPE AND ASSIGN CORRECT BUG TYPE
         // TODO CLOSE FILE
