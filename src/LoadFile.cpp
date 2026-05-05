@@ -59,7 +59,7 @@ void loadData(std::vector<Bug*> &bugs) {
         int id = std::stoi(fields[1]);
         int x = std::stoi(fields[2]);
         int y = std::stoi(fields[3]);
-        int direction = std::stoi(fields[4]);
+        int direction = std::stoi(fields[4]) - 1;
         int health = std::stoi(fields[5]);
 
 
