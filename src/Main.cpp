@@ -24,7 +24,7 @@
 
 void menu();
 
-void loadData(std::vector<Bug*> bugs);
+void loadData(std::vector<Bug*> &bugs);
 
 void displayAllBugs();
 
