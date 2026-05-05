@@ -75,11 +75,13 @@ void loadData(std::vector<Bug*> &bugs) {
             Hopper* hopper = new Hopper(id, x, y, direction, health, hopLength);
             bugs.push_back(hopper);
         }
-
-        // TODO CLOSE FILE
-        inputFile.close();
+        else {
+            std::cout << "invalid type!";
+            continue;
+        }
 
         // TODO SMALL DEBUG LINE AT THE END
         std::cout << type << " " << id << " " << x << " " << y << " " << direction << " " << health << std::endl;
     }
+    inputFile.close();
 }

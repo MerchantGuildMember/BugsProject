@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "Bug.h"
+#include "LoadFile.h"
 
 /*
  *  TODO:   Menu Items like
@@ -43,7 +44,6 @@ std::vector<Bug*> bugs;
 void router(int choice);
 
 int main() {
-    std::vector<Bug*> bugs;
 
     // call menu
     int choice = -1;
@@ -105,10 +105,6 @@ void router(int choice) {
 
 
     }
-}
-
-void loadData(std::vector<Bug*> &bugs) {
-
 }
 
 void displayAllBugs() {
