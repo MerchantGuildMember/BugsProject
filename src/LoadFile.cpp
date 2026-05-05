@@ -72,6 +72,8 @@ void loadData(std::vector<Bug*> &bugs) {
         }
 
         // TODO CLOSE FILE
+        inputFile.close();
+
         // TODO SMALL DEBUG LINE AT THE END
     }
 }
