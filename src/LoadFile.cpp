@@ -50,10 +50,19 @@ void loadData(std::vector<Bug*> &bugs) {
         while (std::getline(ss, token, ';')) {
             fields.push_back(token);
         }
+
         // TODO IF FIELDS EMPTY SKIP
         if (fields.empty()) continue;
 
         // TODO GO THROUGH ALL BUG FIELDS AND ASSIGN
+        char type = fields[0][0];
+        int id = std::stoi(fields[1]);
+        int x = std::stoi(fields[2]);
+        int y = std::stoi(fields[3]);
+        int direction = std::stoi(fields[4]);
+        int health = std::stoi(fields[5]);
+
+
         // TODO CHECK FOR TYPE AND ASSIGN CORRECT BUG TYPE
         // TODO CLOSE FILE
         // TODO SMALL DEBUG LINE AT THE END
