@@ -80,5 +80,6 @@ void loadData(std::vector<Bug*> &bugs) {
         inputFile.close();
 
         // TODO SMALL DEBUG LINE AT THE END
+        std::cout << type << " " << id << " " << x << " " << y << " " << direction << " " << health << std::endl;
     }
 }
