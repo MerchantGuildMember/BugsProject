@@ -4,8 +4,7 @@
 
 #include "SaveFile.h"
 
-int main() {
+void saveFile() {
 
 
-    return 0;
 }
