@@ -5,6 +5,7 @@
 #include "Main.h"
 
 #include <iostream>
+#include <map>
 #include <ostream>
 #include <vector>
 
@@ -43,6 +44,9 @@ std::vector<Bug*> bugs;
 
 // initialise a 2d vector with 100 grid boxes @ 10 x 10 with a value of 'E' to indicate emptiness.
 std::vector<std::vector<char>> cells(10, std::vector<char>(10, 'E'));
+
+// idea is to use a map and keep track of all bugs so an id is associated to an X Y position and then the type can be found by looking for id
+std::map<std::pair<int,int>, std::vector<Bug*>> bugMap;
 
 void router(int choice);
 
@@ -131,12 +135,24 @@ void displayPathHistoryAllBugs() {
 }
 
 void displayAllCells() {
+    for (int b = 0; b < bugs.size(); b++) {
+        std::pair<int, int> position = bugs.at(b) -> getPosition();
+        bugMap[position].push_back(bugs.at(b));
+    }
+
     std::cout << "Displaying all cells..." << std::endl;
 
     // make X and Y coords + values for easier valuing later on
     for (int i = 0; i < cells.size(); i++) {
         for (int j = 0; j < cells[i].size(); j++) {
-            std::cout << cells[i][j] << "  ";
+
+            auto it = bugMap.find(std::make_pair(i,j));
+
+            if (it != bugMap.end()) {
+                std::cout << "B  ";
+            } else {
+                std::cout << cells[i][j] << "  ";
+            }
         }
         std::cout << std::endl;
     }

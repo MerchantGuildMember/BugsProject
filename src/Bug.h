@@ -44,6 +44,12 @@ class Bug {
     Bug(int id, int x, int y, int dir, int health)
     : id(id), position(x, y), currentDirection(direction(dir)), health(health), isAlive(true) {}
 
+    // getters
+    public:
+        int getID() { return id; }
+        std::pair<int, int> getPosition() { return position; }
+        int getX() { return position.first; }
+        int getY() { return position.second; }
 
     virtual void move() = 0;
 
