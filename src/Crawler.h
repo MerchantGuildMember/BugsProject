@@ -12,9 +12,9 @@
 
 
 class Crawler: public Bug {
-
-    Crawler(int id, int x, int y, int dir, int health)
-    : Bug(id, x, y, dir, health) {}
+    public:
+        Crawler(int id, int x, int y, int dir, int health)
+        : Bug(id, x, y, dir, health) {}
 
     void move() {
         while (isWayBlocked()) {
