@@ -41,6 +41,9 @@ void runSimulation();
 
 std::vector<Bug*> bugs;
 
+// initialise a 2d vector with 100 grid boxes @ 10 x 10 with a value of 'E' to indicate emptiness.
+std::vector<std::vector<char>> cells(10, std::vector<char>(10, 'E'));
+
 void router(int choice);
 
 int main() {
@@ -82,12 +85,15 @@ void router(int choice) {
             loadData(bugs);
             break;
         case 2:
+            // nayem
             displayAllBugs();
             break;
         case 3:
+            // nayem
             displayByID();
             break;
         case 4:
+            // nayem
             tapGlass();
             break;
         case 5:
@@ -97,6 +103,7 @@ void router(int choice) {
             displayAllCells();
             break;
         case 7:
+            // nayem
             runSimulation();
             break;
         case 8:
@@ -124,6 +131,7 @@ void displayPathHistoryAllBugs() {
 }
 
 void displayAllCells() {
+    std::cout << "Displaying all cells..." << std::endl;
 
     // make X and Y coords + values for easier valuing later on
     for (int i = 0; i < cells.size(); i++) {
