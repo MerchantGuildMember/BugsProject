@@ -64,6 +64,13 @@ void loadData(std::vector<Bug*> &bugs) {
 
 
         // TODO CHECK FOR TYPE AND ASSIGN CORRECT BUG TYPE
+        if (type == 'C') {
+            Crawler* crawler = new Crawler(id, x, y, direction, health);
+        }
+        else if (type == 'H') {
+            Hopper* hopper = new Hopper(id, x, y, direction, health);
+        }
+
         // TODO CLOSE FILE
         // TODO SMALL DEBUG LINE AT THE END
     }
