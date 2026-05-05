@@ -66,6 +66,7 @@ void loadData(std::vector<Bug*> &bugs) {
         // TODO CHECK FOR TYPE AND ASSIGN CORRECT BUG TYPE
         if (type == 'C') {
             Crawler* crawler = new Crawler(id, x, y, direction, health);
+            bugs.push_back(crawler);
         }
         else if (type == 'H') {
             int hopLength = std::stoi(fields[6]);
