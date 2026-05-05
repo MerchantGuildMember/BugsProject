@@ -11,6 +11,8 @@
 #include <vector>
 
 #include "Bug.h"
+#include "Crawler.h"
+#include "Hopper.h"
 
 /* TODO: Load Data from File
  * TODO:    +---------------------------+---------------------------------------------------------------------------+
