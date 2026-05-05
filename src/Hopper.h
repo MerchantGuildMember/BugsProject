@@ -12,9 +12,12 @@
 
 
 class Hopper: public Bug {
+    private:
+        int hopLength;
+
     public:
-        Hopper(int id, int x, int y, int dir, int health)
-        : Bug(id, x, y, dir, health) {}
+        Hopper(int id, int x, int y, int dir, int health, int hopLength)
+        : Bug(id, x, y, dir, health), hopLength(hopLength) {}
 
     void move() {
         while (isWayBlocked()) {
