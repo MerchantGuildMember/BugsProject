@@ -128,14 +128,21 @@ void displayByID() {
 void fight();
 
 void tapGlass() {
+    // pick a random alive bug to freeze this round
+    std::vector<int> aliveIndices;
     for (int b = 0; b < bugs.size(); b++) {
-        if (bugs[b]->getAlive()) {
+        if (bugs[b]->getAlive()) aliveIndices.push_back(b);
+    }
+    int frozenIndex = aliveIndices[std::rand() % aliveIndices.size()];
+    std::cout << "Frozen this round: " << bugs[frozenIndex]->getType() << " " << bugs[frozenIndex]->getID() << std::endl;
+
+    for (int b = 0; b < bugs.size(); b++) {
+        if (bugs[b]->getAlive() && b != frozenIndex) {
             bugs[b]->move();
         }
     }
     fight();
     std::cout << "Cycle completed " << std::endl;
-
 }
 
 void fight() {
