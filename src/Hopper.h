@@ -21,68 +21,57 @@ class Hopper: public Bug {
 
     void move() {
         while (isWayBlocked()) {
-            // https://stackoverflow.com/questions/2999012/generating-random-enums
-            currentDirection = direction(rand() % 4);       // not sure if it'll work yet
+            currentDirection = direction(rand() % 4);
         }
+        int newX = position.first;
+        int newY = position.second;
         switch (currentDirection) {
-            // Depending on direction, adds +1 or -1 to which item in the pair.
-            case NORTH: // If bug is facing NORTH, it will be going up towards 0 so decrement
-                std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
-                << " to " << position.first << ", " << position.second-1 << std::endl;
-                position.second -= 1;
+            case NORTH:
+                newY = std::max(0, position.second - hopLength);
                 break;
-
-            case EAST:  // If bug is facing EAST, it will be going away from 0 so increment
-                std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
-                << " to " << position.first+1 << ", " << position.second << std::endl;
-                position.first += 1;
+            case EAST:
+                newX = std::min(9, position.first + hopLength);
                 break;
-
-            case SOUTH: // If bug is facing SOUTH, it will be going down away from 0 so increment
-                std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
-                << " to " << position.first << ", " << position.second+1 << std::endl;
-                position.second += 1;
+            case SOUTH:
+                newY = std::min(9, position.second + hopLength);
                 break;
-
-            case WEST:  // If bug is facing WEST, it will be going left towards 0 so decrement
-                std::cout  << "Crawler " << id << " moving from " << position.first << ", " << position.second
-                << " to " << position.first-1 << ", " << position.second << std::endl;
-                position.first -= 1;
+            case WEST:
+                newX = std::max(0, position.first - hopLength);
                 break;
         }
+        std::cout << "Hopper " << id << " moving from (" << position.first << ", " << position.second
+                  << ") to (" << newX << ", " << newY << ")" << std::endl;
+        position = {newX, newY};
         path.push_back(position);
-
     }
 
     bool isWayBlocked() {
         switch (currentDirection) {
             case NORTH:
                 if (position.second == 0) {
-                    std::cout  << "Crawler " << id << " reached eastern edge, changing direction." << std::endl;
+                    std::cout << "Hopper " << id << " reached northern edge, changing direction." << std::endl;
                     return true;
                 }
                 break;
             case EAST:
                 if (position.first == 9) {
-                    std::cout  << "Crawler " << id << " reached eastern edge, changing direction." << std::endl;
+                    std::cout << "Hopper " << id << " reached eastern edge, changing direction." << std::endl;
                     return true;
                 }
-
                 break;
             case SOUTH:
                 if (position.second == 9) {
-                    std::cout  << "Crawler " << id << " reached southern edge, changing direction." << std::endl;
+                    std::cout << "Hopper " << id << " reached southern edge, changing direction." << std::endl;
                     return true;
                 }
-
                 break;
             case WEST:
                 if (position.first == 0) {
-                    std::cout  << "Crawler " << id << " reached western edge, changing direction." << std::endl;
+                    std::cout << "Hopper " << id << " reached western edge, changing direction." << std::endl;
                     return true;
                 }
+                break;
         }
-
         return false;
     }
 
