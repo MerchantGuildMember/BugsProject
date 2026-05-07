@@ -13,6 +13,7 @@
 #include "Bug.h"
 #include "Crawler.h"
 #include "Hopper.h"
+#include "Zigzagger.h"
 
 /* TODO: Load Data from File
  * TODO:    +---------------------------+---------------------------------------------------------------------------+
@@ -75,13 +76,15 @@ void loadData(std::vector<Bug*> &bugs) {
             Hopper* hopper = new Hopper(id, x, y, direction, health, hopLength);
             bugs.push_back(hopper);
         }
+        else if (type == 'Z') {
+            Zigzagger* zigzagger = new Zigzagger(id, x, y, direction, health);
+            bugs.push_back(zigzagger);
+        }
         else {
             std::cout << "invalid type!";
             continue;
         }
 
-        // TODO SMALL DEBUG LINE AT THE END
-        std::cout << type << " " << id << " " << x << " " << y << " " << direction << " " << health << std::endl;
     }
     inputFile.close();
 }

@@ -17,4 +17,6 @@ add_executable(BugsProject
         src/Crawler.cpp
         src/Crawler.h
         src/Hopper.cpp
-        src/Hopper.h)
+        src/Hopper.h
+        src/Zigzagger.cpp
+        src/Zigzagger.h)
