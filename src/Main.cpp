@@ -8,7 +8,7 @@
 #include <map>
 #include <ostream>
 #include <vector>
-#include <random>
+#include <cstdlib>
 
 #include "Bug.h"
 #include "LoadFile.h"
@@ -143,26 +143,31 @@ void fight() {
     for (int i = 0; i < bugs.size(); i++) {
         if (bugs[i]->getAlive()) {
             lookupBugs[bugs.at(i)->getPosition()].push_back(bugs.at(i));
-    }
+        }
 
-    for (auto& entry : lookupBugs) {
-        if (entry.second.size() > 1) {
-            std::pair<Bug*, Bug*> fightingPair = {entry.second[0], entry.second[1]};
+        for (auto& entry : lookupBugs) {
+            if (entry.second.size() > 1) {
+                std::pair<Bug*, Bug*> fightingPair = {entry.second[0], entry.second[1]};
 
-            for (int i = 0; i < 3; i++) {       // 3 rounds
-                const int firstDamage = std::rand() % 6;
-                const int secondDamage = std::rand() % 6;
+                for (int i = 0; i < 3; i++) {       // 3 rounds
+                    const int firstDamage = std::rand() % 6;
+                    const int secondDamage = std::rand() % 6;
 
-                fightingPair.first->dealDamage(firstDamage);
-                if (fightingPair.first->getHealth() <= 0) {
-                    fightingPair.first->setAlive(false);
+
+                    fightingPair.first->dealDamage(firstDamage);
+                    if (fightingPair.first->getHealth() <= 0) {
+                        fightingPair.first->setAlive(false);
+                        break;
+                    }
+
+
+                    fightingPair.second->dealDamage(secondDamage);
+                    if (fightingPair.second->getHealth() <= 0) {
+                        fightingPair.second->setAlive(false);
+                        break;
+                    }
                 }
-                fightingPair.second->dealDamage(secondDamage);
-                if (fightingPair.second->getHealth() <= 0) {
-                    fightingPair.second->setAlive(false);
-                }
-
-
+            }
         }
     }
 }
