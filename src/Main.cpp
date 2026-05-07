@@ -8,6 +8,7 @@
 #include <map>
 #include <ostream>
 #include <vector>
+#include <random>
 
 #include "Bug.h"
 #include "LoadFile.h"
