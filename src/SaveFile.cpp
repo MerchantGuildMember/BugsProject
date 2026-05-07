@@ -38,6 +38,8 @@ void saveFile() {
              << "\n";
     }
 
+    file << "\n=== Movement ===\n";
+    file << "\n=== Kills ===\n";
     std::cout << "Life history written to " << filename << std::endl;
     file.close();
 }
