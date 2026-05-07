@@ -9,6 +9,8 @@
 #include <ostream>
 #include <vector>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
 
 #include "Bug.h"
 #include "LoadFile.h"
@@ -112,8 +114,6 @@ void router(int choice) {
             break;
         case 8:
             saveFile();
-
-
     }
 }
 
@@ -219,7 +219,25 @@ void displayAllCells() {
 }
 
 void runSimulation() {
+    std::cout << "Starting simulation..." << std::endl;
 
+    int aliveBugs = bugs.size();
+    while (aliveBugs > 1) {
+        tapGlass();
+
+        aliveBugs = 0;
+        for (Bug* b : bugs) {
+            if (b->getAlive()) aliveBugs++;
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    }
+
+    for (Bug* b : bugs) {
+        if (b->getAlive()) {
+            std::cout << "Last bug standing: " << b->getType() << " " << b->getID() << std::endl;
+        }
+    }
 }
 
 
