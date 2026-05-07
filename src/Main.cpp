@@ -45,6 +45,8 @@ std::vector<Bug*> bugs;
 
 std::map<std::pair<int,int>, std::vector<Bug*>> bugMap;
 
+std::map<int, std::vector<std::string>> killMap;
+
 void router(int choice);
 
 int main() {
