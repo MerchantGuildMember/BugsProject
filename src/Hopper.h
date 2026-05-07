@@ -87,7 +87,7 @@ class Hopper: public Bug {
     }
 
     std::string getType() {
-            return "Crawler";
+            return "Hopper";
         }
 
 };
