@@ -53,6 +53,7 @@ std::map<int, std::vector<std::string>> killMap;
 void router(int choice);
 
 int main() {
+    std::srand(std::time(nullptr));
 
     // call menu
     int choice = -1;
