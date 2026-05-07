@@ -54,6 +54,7 @@ class Bug {
         int getX() { return position.first; }
         int getY() { return position.second; }
         virtual std::string getType() = 0;
+        virtual int getHopLength() { return 0; }
         const std::list<std::pair<int, int>> getPath() const { return path; }
         int getHealth() { return health; }
         bool getAlive() { return isAlive; }
