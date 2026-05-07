@@ -131,6 +131,7 @@ void displayPathHistoryAllBugs() {
 }
 
 void displayAllCells() {
+    bugMap.clear();
     for (int b = 0; b < bugs.size(); b++) {
         std::pair<int, int> position = bugs.at(b) -> getPosition();
         bugMap[position].push_back(bugs.at(b));
