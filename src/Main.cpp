@@ -123,6 +123,10 @@ void displayByID() {
 }
 
 void tapGlass() {
+    for (int b = 0; b < bugs.size(); b++) {
+        bugs[b]->move();
+    }
+    std::cout << "Cycle completed " << std::endl;
 
 }
 
