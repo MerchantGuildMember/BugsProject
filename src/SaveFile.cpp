@@ -38,7 +38,18 @@ void saveFile() {
              << "\n";
     }
 
+    // MOVEMENT section
     file << "\n=== Movement ===\n";
+    for (Bug* b : bugs) {
+        file << b->getType() << " " << b->getID() << ": ";
+        for (auto it = b->getPath().begin(); it != b->getPath().end(); ++it) {
+            file << "(" << it->first << "," << it->second << ")";
+            if (std::next(it) != b->getPath().end()) file << " -> ";
+        }
+        file << "\n";
+    }
+
+    // KILLS section
     file << "\n=== Kills ===\n";
     std::cout << "Life history written to " << filename << std::endl;
     file.close();
