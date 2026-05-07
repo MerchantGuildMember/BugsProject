@@ -132,6 +132,9 @@ void displayAllBugs() {
 }
 
 void displayByID() {
+    int searchID;
+    std::cout << "Enter bug ID: ";
+    std::cin >> searchID;
 
 }
 
