@@ -52,6 +52,9 @@ class Bug {
         int getX() { return position.first; }
         int getY() { return position.second; }
         virtual std::string getType() = 0;
+        std::list<std::pair<int, int>> getPath() {
+            return path;
+        }
 
     virtual void move() = 0;
 
