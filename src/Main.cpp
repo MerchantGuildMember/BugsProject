@@ -50,6 +50,7 @@ std::vector<Bug*> bugs;
 std::map<std::pair<int,int>, std::vector<Bug*>> bugMap;
 
 std::map<int, std::vector<std::string>> killMap;
+std::map<int, std::string> eatenByMap; // victim id -> "Type ID" of killer
 
 void router(int choice);
 
@@ -131,9 +132,9 @@ void displayAllBugs() {
         std::cout << b->getID() << " " << b->getType()
                   << " (" << b->getX() << "," << b->getY() << ")"
                   << " Health: " << b->getHealth()
-                  << " Direction: " << b->getDirection()
-                  << " Status: " << (b->getAlive() ? "Alive" : "Dead")
-                  << std::endl;
+                  << " Direction: " << b->getDirection();
+        if (b->getHopLength() > 0) std::cout << " HopLength: " << b->getHopLength();
+        std::cout << " Status: " << (b->getAlive() ? "Alive" : "Dead") << std::endl;
     }
 }
 
@@ -147,9 +148,9 @@ void displayByID() {
             std::cout << b->getID() << " " << b->getType()
                       << " (" << b->getX() << "," << b->getY() << ")"
                       << " Health: " << b->getHealth()
-                      << " Direction: " << b->getDirection()
-                      << " Status: " << (b->getAlive() ? "Alive" : "Dead")
-                      << std::endl;
+                      << " Direction: " << b->getDirection();
+            if (b->getHopLength() > 0) std::cout << " HopLength: " << b->getHopLength();
+            std::cout << " Status: " << (b->getAlive() ? "Alive" : "Dead") << std::endl;
             return;
         }
     }
@@ -164,6 +165,7 @@ void tapGlass() {
     for (int b = 0; b < bugs.size(); b++) {
         if (bugs[b]->getAlive()) aliveIndices.push_back(b);
     }
+    if (aliveIndices.empty()) return;
     int frozenIndex = aliveIndices[std::rand() % aliveIndices.size()];
     std::cout << "Frozen this round: " << bugs[frozenIndex]->getType() << " " << bugs[frozenIndex]->getID() << std::endl;
 
@@ -186,47 +188,54 @@ void fight() {
         }
     }
 
-        for (auto& entry : lookupBugs) {
-            if (entry.second.size() > 1) {
-                std::pair<Bug*, Bug*> fightingPair = {entry.second[0], entry.second[1]};
+    for (auto& entry : lookupBugs) {
+        auto& cell = entry.second;
+        for (int i = 0; i + 1 < (int)cell.size(); i += 2) {
+            Bug* first  = cell[i];
+            Bug* second = cell[i + 1];
 
-                for (int i = 0; i < 3; i++) {       // 3 rounds
-                    const int firstDamage = std::rand() % 6;
-                    const int secondDamage = std::rand() % 6;
-
-
-                    fightingPair.first->dealDamage(firstDamage);
-                    if (fightingPair.first->getHealth() <= 0) {
-                        fightingPair.first->setAlive(false);
-                        std::cout << fightingPair.first->getType() << " " << fightingPair.first->getID()
-                                  << " was killed by " << fightingPair.second->getType() << " " << fightingPair.second->getID() << std::endl;
-                        killMap[fightingPair.second->getID()].push_back(fightingPair.first->getType() + " " + std::to_string(fightingPair.first->getID()));
-                        break;
-                    }
-
-                    fightingPair.second->dealDamage(secondDamage);
-                    if (fightingPair.second->getHealth() <= 0) {
-                        fightingPair.second->setAlive(false);
-                        std::cout << fightingPair.second->getType() << " " << fightingPair.second->getID()
-                                  << " was killed by " << fightingPair.first->getType() << " " << fightingPair.first->getID() << std::endl;
-                        killMap[fightingPair.first->getID()].push_back(fightingPair.second->getType() + " " + std::to_string(fightingPair.second->getID()));
-                        break;
-                    }
+            for (int r = 0; r < 3; r++) {
+                first->dealDamage(std::rand() % 6);
+                if (first->getHealth() <= 0) {
+                    first->setAlive(false);
+                    std::string killerStr = second->getType() + " " + std::to_string(second->getID());
+                    std::cout << first->getType() << " " << first->getID() << " was killed by " << killerStr << std::endl;
+                    killMap[second->getID()].push_back(first->getType() + " " + std::to_string(first->getID()));
+                    eatenByMap[first->getID()] = killerStr;
+                    break;
+                }
+                second->dealDamage(std::rand() % 6);
+                if (second->getHealth() <= 0) {
+                    second->setAlive(false);
+                    std::string killerStr = first->getType() + " " + std::to_string(first->getID());
+                    std::cout << second->getType() << " " << second->getID() << " was killed by " << killerStr << std::endl;
+                    killMap[first->getID()].push_back(second->getType() + " " + std::to_string(second->getID()));
+                    eatenByMap[second->getID()] = killerStr;
+                    break;
                 }
             }
         }
     }
+}
 
 void displayPathHistoryAllBugs() {
-
     for (Bug* b : bugs) {
-        std::cout << b->getID() << " " << b->getType() << "  ";
+        std::cout << b->getID() << " " << b->getType() << " Path: ";
         for (auto it = b->getPath().begin(); it != b->getPath().end(); ++it) {
-            std::cout << "(" << it->first << ", " << it->second << ") ->";
+            std::cout << "(" << it->first << "," << it->second << ")";
+            if (std::next(it) != b->getPath().end()) std::cout << " -> ";
+        }
+        if (b->getAlive()) {
+            std::cout << " Alive!";
+        } else {
+            auto it = eatenByMap.find(b->getID());
+            if (it != eatenByMap.end())
+                std::cout << " Eaten by " << it->second;
+            else
+                std::cout << " Dead";
         }
         std::cout << std::endl;
     }
-
 }
 
 void displayAllCells() {
