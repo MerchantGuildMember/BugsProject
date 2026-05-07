@@ -42,10 +42,6 @@ void runSimulation();
 
 std::vector<Bug*> bugs;
 
-// initialise a 2d vector with 100 grid boxes @ 10 x 10 with a value of 'E' to indicate emptiness.
-std::vector<std::vector<char>> cells(10, std::vector<char>(10, 'E'));
-
-// idea is to use a map and keep track of all bugs so an id is associated to an X Y position and then the type can be found by looking for id
 std::map<std::pair<int,int>, std::vector<Bug*>> bugMap;
 
 void router(int choice);
