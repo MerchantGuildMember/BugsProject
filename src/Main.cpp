@@ -146,6 +146,18 @@ void fight() {
         if (entry.second.size() > 1) {
             std::pair<Bug*, Bug*> fightingPair = {entry.second[0], entry.second[1]};
 
+            for (int i = 0; i < 3; i++) {       // 3 rounds
+                const int firstDamage = std::rand() % 6;
+                const int secondDamage = std::rand() % 6;
+
+                fightingPair.first->dealDamage(firstDamage);
+                if (fightingPair.first->getHealth() <= 0) {
+                    fightingPair.first->setAlive(false);
+                }
+                fightingPair.second->dealDamage(secondDamage);
+                if (fightingPair.second->getHealth() <= 0) {
+                    fightingPair.second->setAlive(false);
+                }
 
 
         }
