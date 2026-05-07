@@ -118,7 +118,17 @@ void router(int choice) {
 }
 
 void displayAllBugs() {
-
+    if (bugs.empty()) {
+        std::cout << "No bugs loaded." << std::endl;
+        return;
+    }
+    for (Bug* b : bugs) {
+        std::cout << b->getID() << " " << b->getType()
+                  << " (" << b->getX() << "," << b->getY() << ")"
+                  << " Health: " << b->getHealth()
+                  << " Status: " << (b->getAlive() ? "Alive" : "Dead")
+                  << std::endl;
+    }
 }
 
 void displayByID() {
