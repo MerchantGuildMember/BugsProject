@@ -131,6 +131,19 @@ void tapGlass() {
 
 }
 
+void fight() {
+    // CELL POSITION : ALL BUGS ON THAT CELL
+    std::map<std::pair<int, int>, std::vector<Bug*>> lookupBugs;
+    
+    for (int i = 0; i < bugs.size(); i++) {
+        lookupBugs[bugs.at(i)->getPosition()].push_back(bugs.at(i));
+    }
+
+    for (auto& entry : lookupBugs) {
+
+    }
+}
+
 void displayPathHistoryAllBugs() {
 
     for (Bug* b : bugs) {
