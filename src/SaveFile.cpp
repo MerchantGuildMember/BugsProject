@@ -22,5 +22,12 @@ void saveFile() {
     std::strftime(timestamp, sizeof(timestamp), "%Y%m%d_%H%M%S", t);
     std::string filename = "bugs_life_history_" + std::string(timestamp) + ".out";
 
+    std::ofstream file(filename);
+    if (!file) {
+        std::cout << "Error writing to file." << std::endl;
+        return;
+    }
 
+    std::cout << "Life history written to " << filename << std::endl;
+    file.close();
 }
