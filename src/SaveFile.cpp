@@ -51,6 +51,18 @@ void saveFile() {
 
     // KILLS section
     file << "\n=== Kills ===\n";
+    for (Bug* b : bugs) {
+        file << b->getType() << " " << b->getID() << " killed: ";
+        auto it = killMap.find(b->getID());
+        if (it != killMap.end()) {
+            for (int i = 0; i < it->second.size(); i++) {
+                file << it->second[i];
+                if (i < it->second.size() - 1) file << ", ";
+            }
+        }
+        file << "\n";
+    }
+
     std::cout << "Life history written to " << filename << std::endl;
     file.close();
 }
