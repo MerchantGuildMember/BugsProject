@@ -136,21 +136,19 @@ void displayAllCells() {
         bugMap[bugs.at(b)->getPosition()].push_back(bugs.at(b));
     }
 
-    std::cout << "Displaying all cells..." << std::endl;
-
-    // make X and Y coords + values for easier valuing later on
-    for (int i = 0; i < cells.size(); i++) {
-        for (int j = 0; j < cells[i].size(); j++) {
-
-            auto it = bugMap.find(std::make_pair(i,j));
-
-            if (it != bugMap.end()) {
-                std::cout << "B  ";
+    for (int y = 0; y < 10; y++) {
+        for (int x = 0; x < 10; x++) {
+            std::cout << "(" << x << "," << y << "): ";
+            auto it = bugMap.find(std::make_pair(x, y));
+            if (it == bugMap.end()) {
+                std::cout << "empty" << std::endl;
             } else {
-                std::cout << cells[i][j] << "  ";
+                for (Bug* b : it->second) {
+                    std::cout << b->getType() << " " << b->getID() << "  ";
+                }
+                std::cout << std::endl;
             }
         }
-        std::cout << std::endl;
     }
 }
 
