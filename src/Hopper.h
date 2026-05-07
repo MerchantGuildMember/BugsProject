@@ -75,9 +75,8 @@ class Hopper: public Bug {
         return false;
     }
 
-    std::string getType() {
-            return "Hopper";
-        }
+    std::string getType() { return "Hopper"; }
+    int getHopLength() { return hopLength; }
 
 };
 
