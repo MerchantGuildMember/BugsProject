@@ -50,6 +50,7 @@ class Bug {
         std::pair<int, int> getPosition() { return position; }
         int getX() { return position.first; }
         int getY() { return position.second; }
+        virtual std::string getType() = 0;
 
     virtual void move() = 0;
 
