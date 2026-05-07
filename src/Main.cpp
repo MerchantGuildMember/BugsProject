@@ -96,7 +96,6 @@ void router(int choice) {
             displayByID();
             break;
         case 4:
-            // nayem
             tapGlass();
             break;
         case 5:
@@ -106,7 +105,6 @@ void router(int choice) {
             displayAllCells();
             break;
         case 7:
-            // nayem
             runSimulation();
             break;
         case 8:
@@ -160,6 +158,8 @@ void fight() {
                     fightingPair.first->dealDamage(firstDamage);
                     if (fightingPair.first->getHealth() <= 0) {
                         fightingPair.first->setAlive(false);
+                        std::cout << fightingPair.first->getType() << " " << fightingPair.first->getID()
+                              << " was killed by " << fightingPair.second->getType() << " " << fightingPair.second->getID() << std::endl;
                         break;
                     }
 
@@ -167,13 +167,14 @@ void fight() {
                     fightingPair.second->dealDamage(secondDamage);
                     if (fightingPair.second->getHealth() <= 0) {
                         fightingPair.second->setAlive(false);
+                        std::cout << fightingPair.second->getType() << " " << fightingPair.second->getID()
+                              << " was killed by " << fightingPair.first->getType() << " " << fightingPair.first->getID() << std::endl;
                         break;
                     }
                 }
             }
         }
     }
-}
 
 void displayPathHistoryAllBugs() {
 
