@@ -52,9 +52,11 @@ class Bug {
         int getX() { return position.first; }
         int getY() { return position.second; }
         virtual std::string getType() = 0;
-        const std::list<std::pair<int, int>> getPath() const {
-            return path;
-        }
+        const std::list<std::pair<int, int>> getPath() const { return path; }
+        int getHealth() { return health; }
+        bool getAlive() { return isAlive; }
+        void dealDamage(int n) { this->health = health - n; }
+        void setAlive(bool b) { this->isAlive = b; }
 
     virtual void move() = 0;
 
