@@ -128,6 +128,14 @@ void tapGlass() {
 
 void displayPathHistoryAllBugs() {
 
+    for (Bug* b : bugs) {
+        std::cout << b->getID() << " " << b->getType() << "  ";
+        for (auto it = b->getPath().begin(); it != b->getPath().end(); ++it) {
+            std::cout << it->first << "  " << it->second << ", ";
+        }
+        std::cout << std::endl;
+    }
+
 }
 
 void displayAllCells() {
