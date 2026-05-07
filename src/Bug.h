@@ -57,6 +57,15 @@ class Bug {
         bool getAlive() { return isAlive; }
         void dealDamage(int n) { this->health = health - n; }
         void setAlive(bool b) { this->isAlive = b; }
+        std::string getDirection() {
+            switch (currentDirection) {
+                case NORTH: return "North";
+                case EAST:  return "East";
+                case SOUTH: return "South";
+                case WEST:  return "West";
+                default:    return "Unknown";
+            }
+        }
 
     virtual void move() = 0;
 
