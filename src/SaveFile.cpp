@@ -13,6 +13,7 @@
 
 extern std::vector<Bug*> bugs;
 extern std::map<int, std::vector<std::string>> killMap;
+extern std::map<int, std::string> eatenByMap;
 
 void saveFile() {
     // generate filename with timestamp
@@ -45,6 +46,15 @@ void saveFile() {
         for (auto it = b->getPath().begin(); it != b->getPath().end(); ++it) {
             file << "(" << it->first << "," << it->second << ")";
             if (std::next(it) != b->getPath().end()) file << " -> ";
+        }
+        if (b->getAlive()) {
+            file << " Alive!";
+        } else {
+            auto it2 = eatenByMap.find(b->getID());
+            if (it2 != eatenByMap.end())
+                file << " Eaten by " << it2->second;
+            else
+                file << " Dead";
         }
         file << "\n";
     }
