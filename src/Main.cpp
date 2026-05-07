@@ -66,6 +66,9 @@ int main() {
     } while (choice > 0 && choice < 9);
 
 
+    for (Bug* b : bugs) delete b;
+    bugs.clear();
+
     return 0;
 }
 
@@ -195,23 +198,18 @@ void fight() {
                     fightingPair.first->dealDamage(firstDamage);
                     if (fightingPair.first->getHealth() <= 0) {
                         fightingPair.first->setAlive(false);
-
                         std::cout << fightingPair.first->getType() << " " << fightingPair.first->getID()
-                              << " was killed by " << fightingPair.second->getType() << " " << fightingPair.second->getID() << std::endl;
-
-                        killMap[fightingPair.first->getID()].push_back(fightingPair.second->getType() + " " + std::to_string(fightingPair.second->getID()));
+                                  << " was killed by " << fightingPair.second->getType() << " " << fightingPair.second->getID() << std::endl;
+                        killMap[fightingPair.second->getID()].push_back(fightingPair.first->getType() + " " + std::to_string(fightingPair.first->getID()));
                         break;
                     }
-
 
                     fightingPair.second->dealDamage(secondDamage);
                     if (fightingPair.second->getHealth() <= 0) {
                         fightingPair.second->setAlive(false);
-
                         std::cout << fightingPair.second->getType() << " " << fightingPair.second->getID()
-                              << " was killed by " << fightingPair.first->getType() << " " << fightingPair.first->getID() << std::endl;
-
-                        killMap[fightingPair.second->getID()].push_back(fightingPair.first->getType() + " " + std::to_string(fightingPair.first->getID()));
+                                  << " was killed by " << fightingPair.first->getType() << " " << fightingPair.first->getID() << std::endl;
+                        killMap[fightingPair.first->getID()].push_back(fightingPair.second->getType() + " " + std::to_string(fightingPair.second->getID()));
                         break;
                     }
                 }
