@@ -141,6 +141,7 @@ void displayByID() {
             std::cout << b->getID() << " " << b->getType()
                       << " (" << b->getX() << "," << b->getY() << ")"
                       << " Health: " << b->getHealth()
+                      << " Direction: " << b->getDirection()
                       << " Status: " << (b->getAlive() ? "Alive" : "Dead")
                       << std::endl;
             return;
