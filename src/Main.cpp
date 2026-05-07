@@ -12,6 +12,7 @@
 
 #include "Bug.h"
 #include "LoadFile.h"
+#include "SaveFile.h"
 
 /*
  *  TODO:   Menu Items like
@@ -82,6 +83,8 @@ void menu() {
 
 }
 
+void saveFile();
+
 void router(int choice) {
     switch (choice) {
         case 1:
@@ -108,8 +111,8 @@ void router(int choice) {
             runSimulation();
             break;
         case 8:
+            saveFile();
             exit(0);
-            break;
 
 
     }
