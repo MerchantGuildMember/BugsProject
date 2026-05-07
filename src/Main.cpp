@@ -112,7 +112,6 @@ void router(int choice) {
             break;
         case 8:
             saveFile();
-            exit(0);
 
 
     }
