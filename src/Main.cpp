@@ -144,6 +144,7 @@ void fight() {
         if (bugs[i]->getAlive()) {
             lookupBugs[bugs.at(i)->getPosition()].push_back(bugs.at(i));
         }
+    }
 
         for (auto& entry : lookupBugs) {
             if (entry.second.size() > 1) {
