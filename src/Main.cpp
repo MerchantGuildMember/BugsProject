@@ -127,7 +127,9 @@ void fight();
 
 void tapGlass() {
     for (int b = 0; b < bugs.size(); b++) {
-        bugs[b]->move();
+        if (bugs[b]->getAlive()) {
+            bugs[b]->move();
+        }
     }
     fight();
     std::cout << "Cycle completed " << std::endl;
