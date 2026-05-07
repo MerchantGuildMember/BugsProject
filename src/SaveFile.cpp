@@ -28,6 +28,16 @@ void saveFile() {
         return;
     }
 
+    // BUGS section
+    file << "=== Bugs ===\n";
+    for (Bug* b : bugs) {
+        file << b->getID() << " " << b->getType()
+             << " (" << b->getX() << "," << b->getY() << ")"
+             << " Health: " << b->getHealth()
+             << " Status: " << (b->getAlive() ? "Alive" : "Dead")
+             << "\n";
+    }
+
     std::cout << "Life history written to " << filename << std::endl;
     file.close();
 }
