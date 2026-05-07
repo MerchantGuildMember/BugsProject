@@ -43,7 +43,9 @@ class Bug {
         std::list<std::pair<int, int>> path;
 
     Bug(int id, int x, int y, int dir, int health)
-    : id(id), position(x, y), currentDirection(direction(dir)), health(health), isAlive(true) {}
+    : id(id), position(x, y), currentDirection(direction(dir)), health(health), isAlive(true) {
+        path.push_back(position);
+    }
 
     // getters
     public:
