@@ -136,6 +136,17 @@ void displayByID() {
     std::cout << "Enter bug ID: ";
     std::cin >> searchID;
 
+    for (Bug* b : bugs) {
+        if (b->getID() == searchID) {
+            std::cout << b->getID() << " " << b->getType()
+                      << " (" << b->getX() << "," << b->getY() << ")"
+                      << " Health: " << b->getHealth()
+                      << " Status: " << (b->getAlive() ? "Alive" : "Dead")
+                      << std::endl;
+            return;
+        }
+    }
+    std::cout << "Bug " << searchID << " not found." << std::endl;
 }
 
 void fight();
