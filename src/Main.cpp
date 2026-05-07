@@ -264,8 +264,12 @@ void runSimulation() {
     std::cout << "Starting simulation..." << std::endl;
 
     int aliveBugs = bugs.size();
-    while (aliveBugs > 1) {
+    int maxTaps = 500;
+    int tapCount = 0;
+
+    while (aliveBugs > 1 && tapCount < maxTaps) {
         tapGlass();
+        tapCount++;
 
         aliveBugs = 0;
         for (Bug* b : bugs) {
