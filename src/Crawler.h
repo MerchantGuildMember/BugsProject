@@ -83,6 +83,11 @@ class Crawler: public Bug {
         return false;
     }
 
+    std::string getType() {
+            return "Crawler";
+        }
+
+
 };
 
 
