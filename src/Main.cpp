@@ -141,7 +141,8 @@ void fight() {
     std::map<std::pair<int, int>, std::vector<Bug*>> lookupBugs;
 
     for (int i = 0; i < bugs.size(); i++) {
-        lookupBugs[bugs.at(i)->getPosition()].push_back(bugs.at(i));
+        if (bugs[i]->getAlive()) {
+            lookupBugs[bugs.at(i)->getPosition()].push_back(bugs.at(i));
     }
 
     for (auto& entry : lookupBugs) {
